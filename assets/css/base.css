@@ -1,0 +1,126 @@
+/* -- */
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+/**{
+		  margin: 0;
+		  padding: 0;
+		}
+		body{
+		  background: radial-gradient(#eee, #668);
+		  height: 100vh;
+		  width: 100vw;
+		}*/
+
+#date {
+	background: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	font-family: "Open Sans", sas-serif;
+	font-size: 2em;
+	padding: 0.5em;
+	text-align: center;
+}
+
+#clock2 {
+	align-items: center;
+	-webkit-align-items: center;
+	display: flex;
+	display: -webkit-flex;
+	height: 130px;
+	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	left: calc(50% - 650px);
+	position: absolute;
+	top: calc(50% - 65px);
+	width: 600px;
+}
+
+.unit {
+	background: linear-gradient(#aaa, #777);
+	border-radius: 15px;
+	box-shadow: 0 2px 2px #444;
+	color: #fff;
+	font-family: "Open Sans", sans-serif;
+	font-size: 5em;
+	height: 100%;
+	line-height: 130px;
+	margin: 0 -20px;
+	text-align: center;
+	text-shadow: 0 2px 2px #666;
+	width: 23%;
+	padding: 0px;
+}
+
+/* -- */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: white;
+	display: flex;
+	/*justify-content: center;
+		  align-items: center;*/
+	padding-top: 200px;
+	padding-left: 120px;
+}
+
+.clock {
+	height: 20vh;
+	color: white;
+	font-size: 12vh;
+	font-family: sans-serif;
+	line-height: 20.4vh;
+	display: flex;
+	position: relative;
+	/*background: green;*/
+	overflow: hidden;
+}
+
+.clock::before,
+.clock::after {
+	content: '';
+	width: 7ch;
+	height: 3vh;
+	background: linear-gradient(to top, transparent, white);
+	position: absolute;
+	z-index: 2;
+}
+
+.clock::after {
+	bottom: 0;
+	background: linear-gradient(to bottom, transparent, white);
+}
+
+.clock>div {
+	display: flex;
+}
+
+.tick {
+	line-height: 17vh;
+}
+
+.tick-hidden {
+	opacity: 0;
+}
+
+.move {
+	animation: move linear 1s infinite;
+}
+
+@keyframes move {
+	from {
+		transform: translateY(0vh);
+	}
+
+	to {
+		transform: translateY(-20vh);
+	}
+}
