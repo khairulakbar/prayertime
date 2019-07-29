@@ -117,7 +117,7 @@ function update(){
   var day = date.getDate();
   var year = date.getFullYear();
   
-  var dateString = dayOfWeek + ', ' + day + ' ' + month + ' , ' + year;
+  var dateString = dayOfWeek + ', ' + day + ' ' + month + '  ' + year;
   
   $dOut.text(dateString);
   $hOut.text(hours);
