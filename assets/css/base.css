@@ -14,11 +14,17 @@
 	/*background: rgba(0, 0, 0, 0.1);*/
 	color: #fff;
 	font-family: "Open Sans", sas-serif;
-	font-size: 2em;
-
+	font-size: 1.5em;
 	text-shadow: 0 2px 2px #000;
 	/*padding: 0.5em;
 	text-align: center;*/
+}
+
+.shadows{
+	color: #fff;
+	font-family: "Open Sans", sas-serif;
+	font-size: 1em;
+	text-shadow: 0 2px 2px #000;
 }
 
 #clock2 {

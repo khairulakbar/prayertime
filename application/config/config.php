@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = 'http://localhost/prayertime/';
 
-$config['base_url'] = 'http://localhost:808/kantor/prayertime/';
+//$config['base_url'] = 'http://localhost:808/kantor/prayertime/';
+$config['base_url'] = 'http://192.168.137.1:808/kantor/prayertime/';
 
 /*
 |--------------------------------------------------------------------------
