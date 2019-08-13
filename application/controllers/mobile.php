@@ -14,7 +14,7 @@ class Mobile extends CI_Controller {
 	{
 		date_default_timezone_set("Asia/Bangkok");
 		$tanggal = date("Y-m-d");
-		$settings = $this->model->GetSetting("where status = '1'")->result_array();
+		$settings = $this->model->GetSetting()->result_array();
 		$data = array(
 			
 			'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
@@ -100,6 +100,89 @@ class Mobile extends CI_Controller {
             header('location:'.base_url().'mobile');
         }
 
+	}
+
+	function tambahteks(){
+        
+        $text = $_POST['tambahteks'];
+        
+		$q = $this->model->CountText();
+		$jumlah = $q->num_rows();
+
+        $data = array(	
+            'id' => '',
+			'text' => $text,
+			'urutan' => $jumlah+1,
+			
+            );
+
+        $result = $this->model->AddTeks($data);
+        if($result != 1){
+            
+            echo "Sukses";
+            header('location:'.base_url().'mobile/');
+        }else{
+            echo "Gagal";
+            header('location:'.base_url().'mobile');
+        }	
+	}
+
+	function editteks($kode=0){
+        $id = $kode;
+        $text = $_POST['teks'];
+        
+
+
+        $data = array(	
+            'id' => $id,
+			'text' => $text,
+			//'image' => $file_name,
+			
+            );
+
+        $result = $this->model->EditText($data);
+        if($result != 1){
+            
+            echo "Sukses";
+            header('location:'.base_url().'mobile/');
+        }else{
+            echo "Gagal";
+            header('location:'.base_url().'mobile');
+        }	
+	}
+	
+	function hapusteks($kode=1){
+        
+		$result = $this->model->Hapus('tb_runtext', array('id' => $kode));
+
+        
+        if($result == 1){
+            
+            echo "Sukses";
+            header('location:'.base_url().'mobile/');
+        }else{
+            echo "Gagal";
+            header('location:'.base_url().'mobile');
+        }	
+	}
+	
+	function updatestat($kode = 0){
+		$datausr = $this->model->GetSetting("where id = '$kode'")->result_array();
+		$id_user = $datausr[0]['id'];
+		$data = array(
+			'id' => $id_user,
+			'status' => '1',
+		);
+		
+		$data=$this->model->UpdateStatus($data);
+		//echo json_encode($data);
+		if($result != 1){
+			$this->session->set_flashdata("sukses", "<div class='alert alert-success'><strong>Halaman Front User akan di reload</strong></div>");
+			header('location:'.base_url().'mobile/');
+		}else{
+			$this->session->set_flashdata("alert", "<div class='alert alert-danger'><strong>Halaman Front User gagal di reload</strong></div>");
+			header('location:'.base_url().'mobile/');
+		}	
 	}
 
 }

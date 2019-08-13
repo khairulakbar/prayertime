@@ -57,6 +57,8 @@
         </div>
     </div>
 </form>
+<hr>
+
 <form role="form" action="<?php echo base_url(); ?>mobile/updateimage/<?php echo $id;?>" method="POST" enctype="multipart/form-data">
     <div class="row">
     <div class="col-sm-6">
@@ -79,16 +81,48 @@
         </div>
     </div>
 </form>
+<hr>
 
 <div class="row">
+    <!--tambah runtext -->
+    <div class="col-sm-12">
+    <b>Tambah Teks :</b>
+    <form role="form" action="<?php echo base_url(); ?>mobile/tambahteks/" method="POST" enctype="multipart/form-data">
+    
+        <input type="text" name="tambahteks" class="form-control" placeholder="Isikan Teks...">
+        <button type="submit" class="btn btn-primary col-sm-12"><i class="fa fa-plus"></i> Tambah</button>
+    </form>
+    </div>
+</div>
+<hr>
+<div class="row">
     <div class="col-lg-12">
+    <b>List Running Text</b>
     <?php foreach ($information as $row2) { ?>
-            <p><b><?php echo $row2['text'];?></b><i class="btn btn-warning text-white m-2 fa fa-edit"></i><i class="btn btn-danger fa fa-trash"></i></p>
+        <form role="form" action="<?php echo base_url(); ?>mobile/editteks/<?php echo $row2['id'];?>" method="POST" enctype="multipart/form-data">
+            <input type="text" name="teks" class="form-control" value="<?php echo $row2['text'];?>">
+            <button type="submit" class="btn btn-warning text-white m-2"><i class="fa fa-edit"></i> Edit</button>
+        
+            <a href="<?php echo base_url(); ?>mobile/hapusteks/<?php echo $row2['id'];?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+        </form>
         <?php } ?>
     </div>
 </div>
-
+<br>
+<br>
 </div>
+
+<footer class="fixed-bottom">
+    <div class="row">
+        <div class="col-lg-12 bg-primary text-center p-2">
+        <button class="col-lg-12 btn btn-primary">
+        <a href="<?php echo base_url(); ?>Mobile/updatestat/<?php echo $id ?>">
+            <span class="text-white"><i class="fa fa-refresh"></i>  Refresh Tampilan</span>
+        </a>
+        </button>
+        </div>
+    </div>
+</footer>
 
 </body>
 <!--function browse file-->

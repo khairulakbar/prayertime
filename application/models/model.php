@@ -31,12 +31,44 @@ class Model extends CI_Model {
 	function UpdateSetting($data){
         $this->db->where('id',$data['id']);
         $this->db->update('tb_setting',$data);
-    }
+	}
+	
 	public function GetImg($where= "")
 	{
 		$data = $this->db->query('select * from tb_setting '.$where);
 		return $data;
 	}
+
+	function EditText($data){
+        $this->db->where('id',$data['id']);
+        $this->db->update('tb_runtext',$data);
+	}
+
+	public function Hapus($table,$where){
+		
+		return $this->db->delete($table,$where);
+	}
+
+	public function AddTeks($data)
+	{
+		$this->db->insert('tb_runtext', $data);
+	}
+
+	public function CountText()
+	{
+		$data = $this->db->query('select * from tb_runtext ');
+		return $data;
+	}
+
+	function upstat($where = ""){
+		$hasil=$this->db->query("SELECT * FROM tb_setting ".$where);
+		return $hasil->result();
+	}
+
+	function UpdateStatus($data){
+        $this->db->where('id',$data['id']);
+        $this->db->update('tb_setting',$data);
+    }
 
 	/*ambil data user
 	function GetUser($data) {

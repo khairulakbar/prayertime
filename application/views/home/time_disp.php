@@ -26,22 +26,6 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 <script src="<?php echo base_url();?>assets/new/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    
-  /*
-  setTimeout(reload_page,5000);
-  function reload_page()
-     {
-        window.location.reload(true);
-     }
-
-     */
-      
-
-  });
-  
-</script>
 
 </head>
 <body class="bg-white"  style="background-image: url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>'); background-repeat: repeat; background-size: cover; background-position: center center;">
@@ -424,6 +408,62 @@ $(document).ready(function(){
         $('#runningtxt').addClass('mb-5');
       }
      
+    }
+
+
+    function reload_data(){
+        $.ajax({
+            type  : 'POST',
+            url   : '<?php echo base_url()?>index.php/Time_disp/stat/<?php echo $user ?>',
+            async : false,
+            dataType : 'json',
+            success : function(data){
+                var html = '';
+                var i;
+                for(i=0; i<data.length; i++){
+                  
+                  if(data[i].status === "1"){
+                    var id = setInterval('reload_page();cekreload();', 100);
+                    
+                  }
+
+                }
+                //$('#myCarousel').html(html);
+               
+            }
+
+        });
+    }
+
+    function cekreload(){
+        $.ajax({
+         type: "POST",
+         url: "<?php echo base_url()?>index.php/Time_disp/updatestat",
+         data: "id=<?php echo $user ?>&status=0",
+         success: function(msg){
+           //alert( "Page Refresh" + msg );
+         }
+       });
+
+    }
+
+    function reload_page()
+     {
+        window.location.reload(true);
+     }
+
+     $(document).ready(function(){
+      reload_data(); //pemanggilan fungsi tampil
+      selesai();
+    });
+
+
+    function selesai() {
+        setTimeout(function() {
+            reload_data();
+            selesai();
+            //cekreload();
+        }, 100);
     }
   
 </script>
