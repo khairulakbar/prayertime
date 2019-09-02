@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>PrayerTime by </title>
+<title>PrayerTime by Degilimedia</title>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/new/jquery/jquery.min.js">
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="row mt-2">
+  <div class="row mt-4">
       <div class="col-lg-12">
         <div id="timediv"></div>
         <h1><p class="text-center text-white text-uppercase shadows"><strong><?php echo $nama_masjid; ?></strong></p></h1>
@@ -73,21 +73,20 @@
       </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row mt-2">
       <div class="col-lg-12">
         
         <b><p id="date" class="mt-4"> </p></b>
+
       </div>
   </div>
   
   <div class="row">
     <div class="col-lg-2 col-sm-2">
       <!--<p class="unit" id="hours"></p>-->
-      <div class="panel panel-default">
-        <div class="panel-body bg-white rounded p-2 mb-2 shadow">
+        <div class="rounded p-2 mb-2 shadows">
         <p class="display-1 font-weight-bold text-center" id="hours"></p>
         </div>
-      </div>
     </div>
 
     <div class="col-lg-1 col-sm-2">
@@ -95,11 +94,9 @@
     </div>
 
     <div class="col-lg-2 col-sm-2">
-      <div class="panel panel-default">
-          <div class="panel-body bg-white rounded p-2 mb-2 shadow">
+          <div class="rounded p-2 mb-2 shadows">
             <p class="display-1 font-weight-bold text-center" id="minutes"></p>
           </div>
-      </div>
     </div>
 
     <div class="col-lg-1 col-sm-2">
@@ -107,11 +104,12 @@
     </div>
 
     <div class="col-lg-2 col-sm-2 pb-1">
-      <div class="panel panel-default">
-          <div class="panel-body bg-white rounded p-2 mb-2 shadow">
+      <!--<div class="panel panel-default">
+          <div class="panel-body bg-white rounded p-2 mb-2 shadow">-->
+          <div class="rounded p-2 mb-2 shadows">
             <p class="display-1 font-weight-bold text-center" id="seconds"></p>
           </div>
-      </div>
+      <!--</div>-->
     </div>
   </div>
     
@@ -128,6 +126,8 @@
             “Sesungguhnya shalat itu mencegah dari perbuatan keji dan mungkar.” 
             <br>(QS. Al-‘Ankabuut [29]: 45)
             </p></h6>
+
+            
           </div>
       </div>
     </div>
@@ -139,57 +139,47 @@
   <?php foreach($jadwalsholat as $row) { ?>
     <div class="col-lg-2 col-sm-2 pt-1">
       <!--<p class="unit" id="hours"></p>-->
-      <div class="panel panel-default">
-        <div id="div-imsak" class="panel-body rounded p-2 mb-1 shadow">
-        <p class="font-weight-bold text-center" id="hours">IMSAK</p>
-        <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['imsak']; ?></p>
+        <div id="div-imsak">
+        <p class="font-weight-bold text-center text-white shadows" id="hours">IMSAK</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+        <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['imsak']; ?></p>
         </div>
-      </div>
     </div>
   
     <div class="col-lg-2 col-sm-2 pt-1">
-      <div class="panel panel-default">
-          <div id="div-subuh" class="panel-body rounded p-2 mb-1 shadow">
-            <p class="font-weight-bold text-center" id="minutes">SUBUH</p>
-            <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['subuh']; ?></p>
+      
+          <div id="div-subuh">
+            <p class="font-weight-bold text-center text-white shadows" id="minutes">SUBUH</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['subuh']; ?></p>
           </div>
-      </div>
+      
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
-      <div class="panel panel-default">
-          <div id="div-dzuhur" class="panel-body rounded p-2 mb-1 shadow">
-            <p class="font-weight-bold text-center" id="seconds">DZUHUR</p>
-            <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['dzuhur']; ?></p>
+          <div id="div-dzuhur">
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">DZUHUR</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['dzuhur']; ?></p>
           </div>
-      </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
-      <div class="panel panel-default">
-          <div id="div-ashar" class="panel-body rounded p-2 mb-1 shadow">
-            <p class="font-weight-bold text-center" id="seconds">ASHAR</p>
-            <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['ashar']; ?></p>
+          <div id="div-ashar">
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">ASHAR</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['ashar']; ?></p>
           </div>
-      </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
-      <div class="panel panel-default">
-          <div id="div-maghrib" class="panel-body rounded p-2 mb-1 shadow">
-            <p class="font-weight-bold text-center" id="seconds">MAGHRIB</p>
-            <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['maghrib']; ?></p>
+          <div id="div-maghrib">
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">MAGHRIB</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['maghrib']; ?></p>
           </div>
-      </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
-      <div class="panel panel-default">
-          <div id="div-isya" class="panel-body rounded p-2 mb-1 shadow">
-            <p class="font-weight-bold text-center" id="seconds">ISYA</p>
-            <p class="display-4 font-weight-bold text-center" id="hours"><?php echo $row['isya']; ?></p>
+          <div id="div-isya">
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">ISYA</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['isya']; ?></p>
           </div>
-      </div>
     </div>
   </div>
   
@@ -204,10 +194,13 @@
       
       <marquee id="runteks" class="text-white bg-danger pt-1 pb-0"><h2>
       <?php foreach ($information as $row2) { ?>
+        <?php echo $alertjadwal; //alert data jam solat out of date?>
         <?php echo $row2['text']; ?>
         &nbsp;&nbsp;|&nbsp;&nbsp;
+        
         <?php } ?>
       </h2>
+      
       </marquee>
     </div>
   </div>
@@ -254,13 +247,14 @@
     var min = date.getMinutes();
 
     var tes = date.toLocaleTimeString('en-GB');
-
+    /*
     $('#div-imsak').addClass('bg-white');
     $('#div-subuh').addClass('bg-white');
     $('#div-dzuhur').addClass('bg-white');
     $('#div-ashar').addClass('bg-white');
     $('#div-maghrib').addClass('bg-white');
     $('#div-isya').addClass('bg-white');
+    */
     //if(tes == '13:21:30'){
     //notifikasi sholat & iqamah
     if(tes == imsak+':00'){

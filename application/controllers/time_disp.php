@@ -15,16 +15,33 @@ class Time_disp extends CI_Controller {
 		date_default_timezone_set("Asia/Bangkok");
 		$tanggal = date("Y-m-d");
 		$settings = $this->model->GetSetting()->result_array();
-		$data = array(
-			'user' => $settings[0]['id'],
-			'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
-			'nama_masjid' => $settings[0]['nama_masjid'],
-			'alamat' => $settings[0]['alamat'],
-			'runtext' => $settings[0]['runtext'],
-			'image' => $settings[0]['image'],
-			'information' => $this->model->GetText()->result_array(),
-			
-		);
+
+		$jamsolat = $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array();
+
+		if($jamsolat != null){
+			$data = array(
+				'user' => $settings[0]['id'],
+				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
+				'nama_masjid' => $settings[0]['nama_masjid'],
+				'alamat' => $settings[0]['alamat'],
+				'runtext' => $settings[0]['runtext'],
+				'image' => $settings[0]['image'],
+				'information' => $this->model->GetText()->result_array(),
+				'alertjadwal' => '',
+			);
+		}else{
+			$data = array(
+				'user' => $settings[0]['id'],
+				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '2019-07-01'")->result_array(),
+				'nama_masjid' => $settings[0]['nama_masjid'],
+				'alamat' => $settings[0]['alamat'],
+				'runtext' => $settings[0]['runtext'],
+				'image' => $settings[0]['image'],
+				'information' => $this->model->GetText()->result_array(),
+				'alertjadwal' => 'Prayertime might be out of date, please update data here...  |  ',
+			);
+		}
+		
 
 		$this->load->view('/home/time_disp',$data);
 	}
