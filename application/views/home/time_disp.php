@@ -30,7 +30,7 @@
 </head>
 <body class="bg-white"  style="background-image: url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>'); background-repeat: repeat; background-size: cover; background-position: center center;">
 
-<div class="container mt-2 mb-5">
+<div class="container mt-2">
 
 
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row mt-3">
       <div class="col-lg-12">
         <div id="timediv"></div>
         <h1><p class="text-center text-white text-uppercase shadows"><strong><?php echo $nama_masjid; ?></strong></p></h1>
@@ -73,8 +73,11 @@
       </div>
   </div>
 
-  <div class="row mt-2">
-      <div class="col-lg-12">
+  <div class="row mt-0 mb-0">
+      <div class="col-lg-2">
+      
+      </div>
+      <div class="col-lg-8">
         
         <b><p id="date" class="mt-4"> </p></b>
 
@@ -82,6 +85,9 @@
   </div>
   
   <div class="row">
+    <div class="col-lg-2 col-sm-2">
+      
+    </div>
     <div class="col-lg-2 col-sm-2">
       <!--<p class="unit" id="hours"></p>-->
         <div class="rounded p-2 mb-2 shadows">
@@ -110,6 +116,9 @@
             <p class="display-1 font-weight-bold text-center" id="seconds"></p>
           </div>
       <!--</div>-->
+    </div>
+    <div class="col-lg-2 col-sm-2">
+      
     </div>
   </div>
     
@@ -140,7 +149,7 @@
     <div class="col-lg-2 col-sm-2 pt-1">
       <!--<p class="unit" id="hours"></p>-->
         <div id="div-imsak">
-        <p class="font-weight-bold text-center text-white shadows" id="hours">IMSAK</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+        <p class="font-weight-bold text-center text-white shadows" id="hours">IMSAK</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
         <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['imsak']; ?></p>
         </div>
     </div>
@@ -148,7 +157,7 @@
     <div class="col-lg-2 col-sm-2 pt-1">
       
           <div id="div-subuh">
-            <p class="font-weight-bold text-center text-white shadows" id="minutes">SUBUH</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="font-weight-bold text-center text-white shadows" id="minutes">SUBUH</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
             <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['subuh']; ?></p>
           </div>
       
@@ -156,28 +165,28 @@
 
     <div class="col-lg-2 col-sm-2 pt-1">
           <div id="div-dzuhur">
-            <p class="font-weight-bold text-center text-white shadows" id="seconds">DZUHUR</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">DZUHUR</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
             <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['dzuhur']; ?></p>
           </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
           <div id="div-ashar">
-            <p class="font-weight-bold text-center text-white shadows" id="seconds">ASHAR</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">ASHAR</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
             <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['ashar']; ?></p>
           </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
           <div id="div-maghrib">
-            <p class="font-weight-bold text-center text-white shadows" id="seconds">MAGHRIB</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">MAGHRIB</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
             <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['maghrib']; ?></p>
           </div>
     </div>
 
     <div class="col-lg-2 col-sm-2 pt-1">
           <div id="div-isya">
-            <p class="font-weight-bold text-center text-white shadows" id="seconds">ISYA</p><hr style="width: 100%; color: black; height: 1px; background-color:white;" />
+            <p class="font-weight-bold text-center text-white shadows" id="seconds">ISYA</p><hr style="width: 100%; color: black; height: 2px; background-color:white;" />
             <p class="display-4 font-weight-bold text-center text-white shadows" id="hours"><?php echo $row['isya']; ?></p>
           </div>
     </div>
