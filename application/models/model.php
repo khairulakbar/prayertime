@@ -16,6 +16,12 @@ class Model extends CI_Model {
 		return $data;
 	}
 
+	public function GetHadits($where= "")
+	{
+		$data = $this->db->query('select * from tb_hadits '.$where);
+		return $data;
+	}
+
 	public function GetSetting($where= "")
 	{
 		$data = $this->db->query('select * from tb_setting '.$where);
@@ -70,6 +76,17 @@ class Model extends CI_Model {
         $this->db->update('tb_setting',$data);
     }
 
+	function GetGbr($where= "")
+	{
+		$data = $this->db->query('select * from tb_img '.$where);
+		return $data;
+	}
+
+	function GetVid($where= "") {
+        $data = $this->db->query('select * from tb_vids '.$where);
+		return $data;
+	}
+	
 	/*ambil data user
 	function GetUser($data) {
         $query = $this->db->get_where('admin', $data);

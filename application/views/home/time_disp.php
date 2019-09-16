@@ -26,6 +26,32 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 <script src="<?php echo base_url();?>assets/new/js/bootstrap.min.js"></script>
 
+<script>
+$(document).ready(function() {
+    
+    var interval = setInterval(quotes, 60000);
+    function quotes(){
+      //var quotes = new Array("foo", "bar", "baz", "chuck"),
+    
+      <?php 
+        $result_array = Array();
+        foreach ($hadits as $dt) { 
+        $result_array[] = $dt['indo'];
+        } 
+        $json_array = json_encode($result_array);
+
+      ?>
+      var quotes= <?php echo $json_array  ?>;
+      randno = quotes[Math.floor( Math.random() * quotes.length )];
+      //$('.qindo').text( randno );
+      $('.qindo').animate({'opacity': 0}, 1000, function () {
+          $(this).text(randno);
+      }).animate({'opacity': 1}, 1000);
+
+    }
+    
+});
+</script>
 
 </head>
 <body class="bg-white"  style="background-image: url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>'); background-repeat: repeat; background-size: cover; background-position: center center;">
@@ -64,12 +90,12 @@
     </div>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-5">
       <div class="col-lg-12">
         <div id="timediv"></div>
         <h1><p class="text-center text-white text-uppercase shadows"><strong><?php echo $nama_masjid; ?></strong></p></h1>
         <h4><p class="mb-3 text-center text-white text-uppercase shadows"><strong><?php echo $alamat; ?></strong></p></h4>
-        
+        <p class="quote"></p>
       </div>
   </div>
 
@@ -126,16 +152,23 @@
   <div class="col-lg-12 col-sm-2">
       <div class="panel panel-default">
           <div class="panel-body bg-transparent rounded p-0 shadow">
+          <h6>
+            <p class="qindo m-3 font-weight-bold text-center text-white shadows">
+            “Sesungguhnya shalat itu mencegah dari perbuatan keji dan mungkar.” 
+            (QS. Al-‘Ankabuut [29]: 45)
+            </p>
+          </h6>
+          <!--
           <h2><p class="m-3 font-weight-bold text-center text-white shadows">
             إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ
             
           </p></h2>
-            <h6><p class="m-3 font-weight-bold text-center text-white shadows">
+            <h6><p class="qindo m-3 font-weight-bold text-center text-white shadows">
             <br>
             “Sesungguhnya shalat itu mencegah dari perbuatan keji dan mungkar.” 
             <br>(QS. Al-‘Ankabuut [29]: 45)
             </p></h6>
-
+          -->
             
           </div>
       </div>
@@ -197,7 +230,7 @@
 </div>
 
 
-<div id="runningtxt" class="container-fluid mt-1">
+<div id="runningtxt" class="container-fluid mt-5">
   <div class="row">
     <div class="col-lg-12">
       
@@ -230,7 +263,7 @@
 
     $('#myModal').modal('hide'); 
 
-    var waktu = 5 * 1;
+    var waktu = "<?php echo $durasi_iqamah; ?>" * 60;
     
     $("#timer").attr('data-seconds-left', waktu); 
 

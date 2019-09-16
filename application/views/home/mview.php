@@ -53,8 +53,36 @@
         
     </div>
     <div class="row text-center">
+        <div class="col-sm-6 mb-1">
+        <b>Durasi Iqamah(Menit) :</b>
+        <input type="text" class="form-control" name="durasi" value="<?php echo $durasi_iqamah; ?>">
+        </div>
+        
+    </div>
+
+    <div class="row text-center">
+        <div class="col-sm-6 mb-1">
+        <b>Template : </b>
+        </div>
+        <div class="col-sm-6 mb-1">
+            <input type="radio" name="template"
+            <?php if (isset($template) && $template=="0") echo "checked";?>
+            value="0"> Jadwal Sholat
+            <input type="radio" name="template"
+            <?php if (isset($template) && $template=="1") echo "checked";?>
+            value="1"> Image Slideshow
+            <input type="radio" name="template"
+            <?php if (isset($template) && $template=="2") echo "checked";?>
+            value="2">Video
+        </div>
+        
+    </div>
+
+    
+
+    <div class="row text-center">
         <div class="col-sm-12">
-            <button type="submit" class="btn btn-primary col-sm-12">Update Info</button>
+            <button type="submit" class="btn btn-primary col-sm-12">Update Setting</button>
         </div>
     </div>
 </form>

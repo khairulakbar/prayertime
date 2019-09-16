@@ -21,7 +21,9 @@ class Mobile extends CI_Controller {
 			'nama_masjid' => $settings[0]['nama_masjid'],
 			'alamat' => $settings[0]['alamat'],
 			'runtext' => $settings[0]['runtext'],
-            'image' => $settings[0]['image'],
+			'image' => $settings[0]['image'],
+			'durasi_iqamah' => $settings[0]['durasi'],
+			'template' => $settings[0]['template'],
             'id' => $settings[0]['id'],
 			'information' => $this->model->GetText()->result_array(),
 			
@@ -35,8 +37,8 @@ class Mobile extends CI_Controller {
         $nama_masjid = $_POST['nama_masjid'];
         $alamat = $_POST['alamat'];
         $runtext = $_POST['runtext'];
-
-        
+		$durasi = $_POST['durasi'];
+        $template = $_POST['template'];
         
 
         $data = array(	
@@ -44,8 +46,8 @@ class Mobile extends CI_Controller {
 			'nama_masjid'=> $nama_masjid,
 			'alamat' => $alamat,
 			'runtext' => $runtext,
-			//'image' => $file_name,
-			
+			'durasi' => $durasi,
+			'template' => $template,
             );
 
         $result = $this->model->UpdateSetting($data);

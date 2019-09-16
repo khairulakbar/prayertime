@@ -21,6 +21,7 @@ class Time_disp extends CI_Controller {
 		if($jamsolat != null){
 			$data = array(
 				'user' => $settings[0]['id'],
+				'hadits' => $this->model->GetHadits()->result_array(),
 				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
 				'nama_masjid' => $settings[0]['nama_masjid'],
 				'alamat' => $settings[0]['alamat'],
@@ -28,22 +29,61 @@ class Time_disp extends CI_Controller {
 				'image' => $settings[0]['image'],
 				'information' => $this->model->GetText()->result_array(),
 				'alertjadwal' => '',
+				'durasi_iqamah' => $settings[0]['durasi'],
 			);
 		}else{
 			$data = array(
 				'user' => $settings[0]['id'],
+				'hadits' => $this->model->GetHadits()->result_array(),
 				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '2019-07-01'")->result_array(),
 				'nama_masjid' => $settings[0]['nama_masjid'],
 				'alamat' => $settings[0]['alamat'],
 				'runtext' => $settings[0]['runtext'],
 				'image' => $settings[0]['image'],
 				'information' => $this->model->GetText()->result_array(),
+				'durasi_iqamah' => $settings[0]['durasi'],
 				'alertjadwal' => 'Prayertime might be out of date, please update data here...  |  ',
 			);
 		}
 		
+		if($settings[0]['template'] == 1){
+			$data = array(
+				'user' => $settings[0]['id'],
+				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
+				'nama_masjid' => $settings[0]['nama_masjid'],
+				'alamat' => $settings[0]['alamat'],
+				'runtext' => $settings[0]['runtext'],
+				'image' => $settings[0]['image'],
+				'information' => $this->model->GetText()->result_array(),
+				'alertjadwal' => '',
 
-		$this->load->view('/home/time_disp',$data);
+				'interval' => '5000',
+				'dataimg' => $this->model->GetGbr("where id_user = '58' order by urut asc")->result_array(),
+			);
+			
+			$this->load->view('/home/im_disp',$data);
+		}elseif($settings[0]['template'] == 2){
+			$data = array(
+				'user' => $settings[0]['id'],
+				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
+				'nama_masjid' => $settings[0]['nama_masjid'],
+				'alamat' => $settings[0]['alamat'],
+				'runtext' => $settings[0]['runtext'],
+				'image' => $settings[0]['image'],
+				'information' => $this->model->GetText()->result_array(),
+				'alertjadwal' => '',
+
+				
+				'datavid' => $this->model->GetVid("where id_user = '58' order by urut asc")->result_array(),
+			);
+			
+			$this->load->view('/home/vid_disp',$data);
+		}
+		else{
+			$this->load->view('/home/time_disp',$data);
+		}
+
+		
 	}
 
 	//fungsi untuk reload page
@@ -57,6 +97,7 @@ class Time_disp extends CI_Controller {
 		$data = array(
 			'id' => $this->input->post('id'),
 			'status' => $this->input->post('status'),
+			'template' => $this->input->post('template'),
 		);
 		
 		$data=$this->model->UpdateStatus($data);
