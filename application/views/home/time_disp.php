@@ -54,9 +54,10 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body class="bg-white"  style="background-image: url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>'); background-repeat: repeat; background-size: cover; background-position: center center;">
+<div id="screen">
+<body   style="background-image: url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>'); background-repeat: repeat; background-size: cover; background-position: center center;">
 
-<div class="container mt-2">
+<div id="screen" class="container mt-2">
 
 
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -249,6 +250,7 @@ $(document).ready(function() {
 </div>
 
 
+</div>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script2.js">
 
@@ -263,7 +265,7 @@ $(document).ready(function() {
 
     $('#myModal').modal('hide'); 
 
-    var waktu = "<?php echo $durasi_iqamah; ?>" * 60;
+    var waktu = "<?php echo $durasi_iqamah; ?>" *60;
     
     $("#timer").attr('data-seconds-left', waktu); 
 
@@ -289,6 +291,18 @@ $(document).ready(function() {
     var min = date.getMinutes();
 
     var tes = date.toLocaleTimeString('en-GB');
+
+    //screen off after iqamah
+    var pop = function(){
+      $('#screen').css({	"display": "block", opacity: 0});
+      $('body').css({"overflow":"hidden", "background":"#000"});
+      
+    }
+    var pop2 = function(){
+      $('#screen').css({	"display": "block", opacity: 100});
+      $('body').css({"overflow":"none", "background-image": "url('<?php echo base_url(); ?>assets/images/<?php echo $image;?>')", "background-repeat":"repeat" ,"background-size":"cover", "background-position": "center"  });
+    }
+    
     /*
     $('#div-imsak').addClass('bg-white');
     $('#div-subuh').addClass('bg-white');
@@ -297,7 +311,7 @@ $(document).ready(function() {
     $('#div-maghrib').addClass('bg-white');
     $('#div-isya').addClass('bg-white');
     */
-    //if(tes == '13:21:30'){
+    //if(tes == '14:31:20'){
     //notifikasi sholat & iqamah
     if(tes == imsak+':00'){
       showmodal();
@@ -313,6 +327,8 @@ $(document).ready(function() {
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
 
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
             }
           });
         });
@@ -332,6 +348,9 @@ $(document).ready(function() {
             onComplete: function(element){
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
+
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
 
             }
           });
@@ -353,6 +372,9 @@ $(document).ready(function() {
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
 
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
+
             }
           });
         });
@@ -372,6 +394,9 @@ $(document).ready(function() {
             onComplete: function(element){
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
+
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
 
             }
           });
@@ -393,6 +418,9 @@ $(document).ready(function() {
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
 
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
+
             }
           });
         });
@@ -412,6 +440,9 @@ $(document).ready(function() {
             onComplete: function(element){
               element.addClass('is-complete');
               setTimeout(hideModal, 3000);
+
+              setTimeout(pop, 10000);
+              setTimeout(pop2, 300000);
 
             }
           });
@@ -436,15 +467,18 @@ $(document).ready(function() {
      function myTeks() {
       var tampil_runtext= '<?php echo $runtext ?>';
       var x = document.getElementById("runteks");
-      if (tampil_runtext == 1) {
+      if (tampil_runtext == 1 ) {
         x.style.display = "block";  
         $('#runningtxt').removeClass('mb-5');
-      }else{
+      }else if(tampil_runtext == 0){
         x.style.display = "none"; 
         $('#runningtxt').addClass('mb-5');
       }
-     
+
+      
     }
+
+    
 
 
     function reload_data(){
@@ -502,6 +536,9 @@ $(document).ready(function() {
         }, 100);
     }
   
+
+    
+
 </script>
 <style>
   

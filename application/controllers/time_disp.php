@@ -38,15 +38,16 @@ class Time_disp extends CI_Controller {
 				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '2019-07-01'")->result_array(),
 				'nama_masjid' => $settings[0]['nama_masjid'],
 				'alamat' => $settings[0]['alamat'],
-				'runtext' => $settings[0]['runtext'],
+				'runtext' => '1',
 				'image' => $settings[0]['image'],
 				'information' => $this->model->GetText()->result_array(),
 				'durasi_iqamah' => $settings[0]['durasi'],
-				'alertjadwal' => 'Prayertime might be out of date, please update data here...  |  ',
+				'alertjadwal' => 'Prayertime might be out of date, please update data here   |  ',
 			);
 		}
 		
 		if($settings[0]['template'] == 1){
+			$interval = $this->model->GetGbr("where id_user = '1'")->result_array();
 			$data = array(
 				'user' => $settings[0]['id'],
 				'jadwalsholat' => $this->model->GetJadwal("where tanggal = '$tanggal'")->result_array(),
@@ -57,8 +58,8 @@ class Time_disp extends CI_Controller {
 				'information' => $this->model->GetText()->result_array(),
 				'alertjadwal' => '',
 
-				'interval' => '5000',
-				'dataimg' => $this->model->GetGbr("where id_user = '58' order by urut asc")->result_array(),
+				'interval' => $interval[0]['detik'],
+				'dataimg' => $this->model->GetGbr("where id_user = '1' order by urut asc")->result_array(),
 			);
 			
 			$this->load->view('/home/im_disp',$data);
@@ -74,7 +75,7 @@ class Time_disp extends CI_Controller {
 				'alertjadwal' => '',
 
 				
-				'datavid' => $this->model->GetVid("where id_user = '58' order by urut asc")->result_array(),
+				'datavid' => $this->model->GetVid("where id_user = '1' order by urut asc")->result_array(),
 			);
 			
 			$this->load->view('/home/vid_disp',$data);
@@ -97,7 +98,7 @@ class Time_disp extends CI_Controller {
 		$data = array(
 			'id' => $this->input->post('id'),
 			'status' => $this->input->post('status'),
-			'template' => $this->input->post('template'),
+			
 		);
 		
 		$data=$this->model->UpdateStatus($data);

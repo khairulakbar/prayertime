@@ -144,8 +144,9 @@ header .overlay {
       <div class="carousel-inner">
 
         <?php 
+          $int = $interval*60000;
           $jmlgambar = count($dataimg);
-          $durasi = $jmlgambar*$interval;
+          $durasi = $jmlgambar*$int;
 
           //echo $durasi;
 
@@ -177,7 +178,7 @@ header .overlay {
   $('#myCarousel').find('.item').first().addClass('active');
 
  $('#myCarousel').carousel({
-  interval: <?php echo $interval;?>,
+  interval: <?php echo $int;?>,
   wrap: true
   });
 
@@ -239,6 +240,7 @@ setTimeout(function() {
 
     }
 
+/*
     function toVideo(){
         $.ajax({
          type: "POST",
@@ -251,7 +253,7 @@ setTimeout(function() {
        });
 
     }
-
+*/
     function reload_page()
      {
         window.location.reload(true);
